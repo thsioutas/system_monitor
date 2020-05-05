@@ -1,6 +1,5 @@
 #include <unistd.h>
 #include <cstddef>
-#include <iostream>
 #include <set>
 #include <string>
 #include <vector>
@@ -20,7 +19,7 @@ Processor& System::Cpu() { return cpu_; }
 
 // Return a container composed of the system's processes
 vector<Process>& System::Processes() {
-  vector<int> pids = LinuxParser::Pids();
+  auto pids = LinuxParser::Pids();
   for (int pid : pids) {
     if (std::find(prev_pids_.begin(), prev_pids_.end(), pid) ==
         prev_pids_.end()) {
