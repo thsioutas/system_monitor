@@ -29,6 +29,7 @@ vector<Process>& System::Processes() {
     }
   }
   prev_pids_ = pids;
+  std::sort(processes_.begin(), processes_.end());
   return processes_;
 }
 
