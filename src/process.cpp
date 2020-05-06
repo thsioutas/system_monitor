@@ -21,8 +21,9 @@ int Process::Pid() { return pid_; }
 
 // Return this process's CPU utilization
 float Process::CpuUtilization() {
-  float total_time = LinuxParser::ActiveJiffies(pid_) / sysconf(_SC_CLK_TCK);
-  float uptime = LinuxParser::UpTime(pid_);
+  const float total_time =
+      LinuxParser::ActiveJiffies(pid_) / sysconf(_SC_CLK_TCK);
+  const float uptime = LinuxParser::UpTime(pid_);
   cpu_utilization_ = total_time / uptime;
   return cpu_utilization_;
 }
